@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StatusIndicatorProps } from "./types";
+import { StatusIndicatorProps } from "./ui/types";
 
 export const StatusIndicator: React.FC<StatusIndicatorProps> = ({
   number,

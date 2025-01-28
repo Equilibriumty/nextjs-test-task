@@ -3,11 +3,9 @@ export interface StatusIndicatorProps {
   isActive: boolean;
 }
 
-export interface InputFieldProps extends React.ComponentProps<'input'> {
+export interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
-  placeholder: string;
-  id: string;
-  value: string;
+  error?: string;
 }
 
 export interface ButtonProps extends React.ComponentProps<'button'> {

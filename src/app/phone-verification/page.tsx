@@ -2,23 +2,52 @@
 import * as React from "react";
 import Image from "next/image";
 import { StatusIndicator } from "@/components/StatusIndicator";
-import { Button } from "@/components/Button";
-import { InputField } from "@/components/InputField";
+import { Button } from "@/components/ui/Button";
+import { InputField } from "@/components/ui/InputField";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  phoneVerificationSchema,
+  type PhoneVerificationFormData,
+} from "@/utils/validations/onboardingForm";
+import { useFormStore } from "@/store/formStore";
+import { useState } from "react";
+import { CountryCodeSelector } from "@/components/CountryCodeSelector";
+import Modal from "@/components/ui/Modal";
 
 export default function PhoneValidation() {
-  const [phoneNumber, setPhoneNumber] = React.useState("");
-  const [countryCode, setCountryCode] = React.useState("+44");
-
   const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const [countryCodeSelectorVisible, setCountryCodeSelectorVisisble] =
+    useState(false);
+
+  const { phoneVerification, setPhoneVerificationData, clearFormState } =
+    useFormStore();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm<PhoneVerificationFormData>({
+    resolver: zodResolver(phoneVerificationSchema),
+    defaultValues: phoneVerification,
+    mode: "onChange",
+  });
+
+  const onSubmit = (data: PhoneVerificationFormData) => {
+    setPhoneVerificationData(data);
+    router.push("/success");
+    clearFormState();
+  };
+
+  const handleOpenModal = () => {
+    setCountryCodeSelectorVisisble(true);
   };
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-[#F6FAFE]">
       <div className="flex flex-col mx-auto w-full max-w-[480px] px-6 py-6">
         <header className="flex flex-row justify-between  items-center h-[72]">
           <button
@@ -47,7 +76,10 @@ export default function PhoneValidation() {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col gap-6 w-full"
+          >
             <div className="flex flex-col gap-4 w-full">
               <h1 className="text-xl font-bold leading-7 font-primary mt-6 text-slate-900">
                 Let&apos;s validate your number
@@ -63,10 +95,13 @@ export default function PhoneValidation() {
                   <div className="flex flex-col min-w-28 whitespace-nowrap text-slate-900">
                     <button
                       type="button"
+                      onClick={handleOpenModal}
                       className="flex overflow-hidden gap-4 focus:border-transparent focus:ring-2 focus:ring-sky-600 justify-center items-center w-full border-2 border-solid border-slate-900 border-opacity-10 min-h-[56px] rounded-[56px]"
                       aria-label="Select country code"
                     >
-                      <span className="text-[16px] font-light">{countryCode}</span>
+                      <span className="text-[16px] font-light">
+                        {phoneVerification.countryCode || "+44"}
+                      </span>
                       <Image
                         src="/Arrow.svg"
                         alt=""
@@ -76,15 +111,16 @@ export default function PhoneValidation() {
                       />
                     </button>
                   </div>
-                  <InputField
-                    id="phone"
-                    type="tel"
-                    value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                    placeholder="07890 123456"
-                    className="flex-1  border-2 border-solid border-slate-900 border-opacity-10 rounded-[56px] text-slate-900"
-                    aria-label="Phone number"
-                  />
+                  <div className="flex-1">
+                    <InputField
+                      type="tel"
+                      placeholder="07890 123456"
+                      autoFocus
+                      id="phoneNumber"
+                      error={errors.phoneNumber?.message}
+                      {...register("phoneNumber")}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -107,13 +143,21 @@ export default function PhoneValidation() {
             </div>
 
             <div className="mt-3">
-              <Button type="submit" variant="primary" disabled={!phoneNumber}>
+              <Button type="submit" variant="primary" disabled={!isValid}>
                 Continue
               </Button>
             </div>
           </form>
         </main>
       </div>
+      {countryCodeSelectorVisible && (
+        <Modal
+          isOpen={countryCodeSelectorVisible}
+          onClose={() => setCountryCodeSelectorVisisble(false)}
+        >
+          <CountryCodeSelector />
+        </Modal>
+      )}
     </div>
   );
 }

@@ -2,34 +2,36 @@
 
 import * as React from "react";
 import { StatusIndicator } from "@/components/StatusIndicator";
-import { InputField } from "@/components/InputField";
-import { Button } from "@/components/Button";
+import { InputField } from "@/components/ui/InputField";
+import { Button } from "@/components/ui/Button";
 import Image from "next/image";
-import { OnboardingFormData } from "@/components/types";
 import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { onboardingSchema, type OnboardingFormData } from "@/utils/validations/onboardingForm";
+import { useFormStore } from "@/store/formStore";
 
-export const OnboardingPage: React.FC = () => {
-  const [formData, setFormData] = React.useState<OnboardingFormData>({
-    firstName: "",
-    lastName: "",
+export default function OnboardingPage() {
+  const router = useRouter();
+  const { onboarding, setOnboardingData } = useFormStore();
+  
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, },
+  } = useForm<OnboardingFormData>({
+    resolver: zodResolver(onboardingSchema),
+    defaultValues: onboarding,
+    mode: "onChange",
   });
 
-  const router = useRouter();
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (formData.firstName && formData.lastName) {
-      router.push("/phone-verification");
-    }
+  const onSubmit = (data: OnboardingFormData) => {
+    setOnboardingData(data);
+    router.push("/phone-verification");
   };
 
-  const handleInputChange =
-    (field: keyof OnboardingFormData) => (value: string) => {
-      setFormData((prev) => ({ ...prev, [field]: value }));
-    };
-
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-[#F6FAFE]">
       <div className="flex flex-col mx-auto w-full max-w-[480px] px-6 py-6">
         <header className="flex flex-col items-center justify-center h-[72]">
           <Image
@@ -52,7 +54,7 @@ export const OnboardingPage: React.FC = () => {
 
           <div className="flex flex-col gap-6 w-full">
             <form
-              onSubmit={handleSubmit}
+              onSubmit={handleSubmit(onSubmit)}
               className="flex flex-col gap-6 w-full"
             >
               <div className="flex flex-col gap-4 w-full">
@@ -60,31 +62,30 @@ export const OnboardingPage: React.FC = () => {
                   Some introductions
                 </h1>
 
-                <InputField
-                  label="First name"
-                  placeholder="Your first name"
-                  id="firstName"
-                  value={formData.firstName}
-                  onChange={(e) =>
-                    handleInputChange("firstName")(e.target.value)
-                  }
-                />
+                <div className="flex flex-col gap-1">
+                  <InputField
+                    label="First name"
+                    placeholder="Your first name"
+                    id="firstName"
+                    error={errors.firstName?.message}
+                    {...register("firstName")}
+                  />
+                </div>
 
-                <InputField
-                  label="Last name"
-                  placeholder="Your last name"
-                  id="lastName"
-                  value={formData.lastName}
-                  onChange={(e) =>
-                    handleInputChange("lastName")(e.target.value)
-                  }
-                />
+                <div className="flex flex-col gap-1">
+                  <InputField
+                    label="Last name"
+                    placeholder="Your last name"
+                    id="lastName"
+                    error={errors.lastName?.message}
+                    {...register("lastName")}
+                  />
+                </div>
               </div>
               <div className="flex flex-col gap-2">
                 <Button
                   variant="primary"
                   type="submit"
-                  disabled={!formData.firstName || !formData.lastName}
                 >
                   Continue
                 </Button>
@@ -99,4 +100,4 @@ export const OnboardingPage: React.FC = () => {
       </div>
     </div>
   );
-};
+}
