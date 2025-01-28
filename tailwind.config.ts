@@ -12,6 +12,10 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        primary: "var(--eb-garamond)",
+        secondary: "var(--font-hk-grotesk)"
+      }
     },
   },
   plugins: [],
