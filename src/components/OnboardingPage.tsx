@@ -1,11 +1,11 @@
 "use client";
 
 import * as React from "react";
-import { StatusIndicator } from "@/components/StatusIndicator";
-import { InputField } from "@/components/InputField";
-import { Button } from "@/components/Button";
+import { StatusIndicator } from "./StatusIndicator";
+import { InputField } from "./InputField";
+import { Button } from "./Button";
 import Image from "next/image";
-import { OnboardingFormData } from "@/components/types";
+import { OnboardingFormData } from "./types";
 import { useRouter } from "next/navigation";
 
 export const OnboardingPage: React.FC = () => {
@@ -89,10 +89,11 @@ export const OnboardingPage: React.FC = () => {
                   Continue
                 </Button>
                 <Button variant="secondary">Already have an account?</Button>
+              
               </div>
-              <div className="text-center text-xs text-slate-500">
-                Version 0.1
-              </div>
+                <div className="text-center text-xs text-slate-500">
+                  Version 0.1
+                </div>
             </form>
           </div>
         </main>
