@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { StatusIndicator } from "@/components/StatusIndicator";
+import { Stepper } from "@/components/Stepper";
 import { InputField } from "@/components/ui/InputField";
 import { Button } from "@/components/ui/Button";
 import Image from "next/image";
@@ -27,7 +27,7 @@ export default function OnboardingPage() {
 
   const onSubmit = (data: OnboardingFormData) => {
     setOnboardingData(data);
-    router.push("/phone-verification");
+    router.push("/phone-validation");
   };
 
   return (
@@ -45,11 +45,7 @@ export default function OnboardingPage() {
 
         <main className="flex flex-col w-full">
           <div className="flex justify-center h-[48]">
-            <div className="flex gap-1 items-center">
-              <StatusIndicator number={1} isActive={true} />
-              <div className="flex shrink-0 w-1 h-1 rounded-full bg-slate-900 bg-opacity-10" />
-              <StatusIndicator number={2} isActive={false} />
-            </div>
+              <Stepper  />
           </div>
           <div className="flex flex-col gap-6 w-full">
             <form

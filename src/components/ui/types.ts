@@ -1,23 +1,13 @@
-export interface StatusIndicatorProps {
-  number: number;
-  isActive: boolean;
-}
-
-export interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export type InputFieldProps = React.ComponentProps<'input'> & { 
   label?: string;
   error?: string;
   showErrorState?: boolean
 }
 
-export interface ButtonProps extends React.ComponentProps<'button'> {
+export type ButtonProps = React.ComponentProps<'button'> &  {
   children: React.ReactNode;
   variant: "primary" | "secondary";
   onClick?: () => void;
   type?: "button" | "submit";
   disabled?: boolean;
-}
-
-export interface OnboardingFormData {
-  firstName: string;
-  lastName: string;
 }
