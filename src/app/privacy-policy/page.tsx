@@ -1,48 +1,60 @@
-"use client"
+"use client";
+
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-export default function PrivacyPolicy() {
-    const router = useRouter();
+export default function TermsAndConditionsModal() {
+  const router = useRouter();
 
-
-    const handleGoBack = () => {
-        router.back();
-    }
+  const handleGoBack = () => {
+    router.back();
+  };
 
   return (
-    <div className="max-w-4xl min-h-screen mx-auto bg-slate-50">
-      <h2 className="text-3xl font-bold mb-6">Privacy Policy</h2>
+    <div className="w-full mx-auto min-h-screen bg-slate-50">
+      <div className="max-w-3xl p-6 mx-auto">
+        <div className="flex h-[72px] justify-end items-center">
+          <button onClick={handleGoBack}>
+            <Image src="/XMark.svg" alt="Close" width={13} height={13} />
+          </button>
+        </div>
+        <h2 className="text-3xl text-slate-900 font-primary font-bold mb-6">
+          Privacy policy
+        </h2>
 
-      <div className="space-y-4">
-        <p className="text-gray-700">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
-        </p>
+        <div className="space-y-4">
+          <p className="text-gray-700 font-light">
+            Pirate ipsum arrgh bounty warp jack. Clipper driver the sloop
+            anchor. Coast coxswain anchor jennys just furl pin gangway yellow.
+            Ahoy timbers dead tender guns of arr round down bilge. Sink black
+            avast plate tell her tender. Road tales halter grog gun. Splice
+            bucko blossom schooner topsail jolly chantey bounty sloop coxswain.
+            Or aft o'nine run the dock belaying clipper. Hang ballast down
+            topsail scurvy grog. Heave halter to spot log dock rat heave hands
+            ipsum. Locker yer coxswain gold gangway. Grog pink deck men jones'
+            yawl yard fer. Lugsail starboard plate crack topsail.
+          </p>
 
-        <p className="text-gray-700">
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-          dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est
-          laborum.
-        </p>
+          <p className="text-gray-700 font-light">
+            On starboard blow sail bow grog just arr. Pinnace privateer just
+            american prey spot. Just topmast round hearties scurvy anchor cup
+            blow smartly salmagundi. Sink shrouds belaying pay cutlass gangplank
+            jolly killick lass. Parrel american six arr jack line. Starboard cog
+            seas coffer hang rig boom belay to. Buccaneer blow piracy parrel
+            down black timbers rig. Tails nipperkin ketch boom gold. Pirate
+            topgallant plate jolly sheet dead. Crimp black crack boatswain men.
+          </p>
 
-        <p className="text-gray-700">
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
-          ab illo inventore veritatis et quasi architecto beatae vitae dicta
-          sunt explicabo.
-        </p>
-
-        <p className="text-gray-700">
-          Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-          fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
-          sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor
-          sit amet, consectetur, adipisci velit.
-        </p>
+          <p className="text-gray-700 font-light">
+            Pin ipsum shot boat arr. Mizzen prey scurvy no crow's. Log roger
+            schooner yer gangway coast piracy gunwalls. Chase yarr chains down
+            arrgh hands spirits gun. Salmagundi scurvy yarr lugsail aye or bow
+            shiver. Lass dock pin driver poop rat. Avast sail bilge rat gunwalls
+            topsail pink.
+          </p>
+        </div>
       </div>
     </div>
   );
-};
+}
