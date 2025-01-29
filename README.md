@@ -1,4 +1,11 @@
 
+## Live preview
+[Link](https://nextjs-test-task.vercel.app/)
+
+## Demo
+[Demo](https://drive.google.com/drive/folders/1LXtsK7OH1ZP4fKimA6062YSD4I93L85A?usp=drive_link)
+
+
 ## Getting Started
 
 First, clone the repo
