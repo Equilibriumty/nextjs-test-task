@@ -36,15 +36,10 @@ export default function PhoneValidation() {
     mode: "onChange",
   });
 
-  const onSubmit = (data: PhoneVerificationFormData) => {
-    setPhoneVerificationData(data);
+  const onSubmit = () => {
     router.push("/success");
     clearFormState();
   };
-
-
-
-
 
   return (
     <div className="min-h-screen bg-[#F6FAFE]">
@@ -131,6 +126,7 @@ export default function PhoneValidation() {
                       {...register('phoneNumber')}   
                       onChange={(e) => {
                         const value = toPhoneNumberMask(e.target.value)
+                        setPhoneVerificationData({phoneNumber: e.target.value, countryCode: phoneVerification.countryCode})
                         e.target.value = value
                       }}
                       className={clsx(
