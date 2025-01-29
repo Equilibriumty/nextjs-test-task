@@ -1,15 +1,15 @@
 import { z } from 'zod'
 
 export const onboardingSchema = z.object({
-  firstName: z.string().min(1, 'First name is required'),
-  lastName: z.string().min(1, 'Last name is required'),
+  firstName: z.string().min(1, 'Please enter a first name'),
+  lastName: z.string().min(1, 'Please ener a last name').regex(/^[a-zA-Z\s]+$/, 'We only accept letters and spaces for names, no special characters'),
 })
 
 export const phoneVerificationSchema = z.object({
   phoneNumber: z
     .string()
     .min(1, 'Phone number is required')
-    .regex(/^[0-9\s]+$/, 'Invalid phone number format'),
+    .regex(/^\d{5}\s\d{6}$/, 'Please check the phone number is in the correct format'),
   countryCode: z.string().default('+44')
 })
 

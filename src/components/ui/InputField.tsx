@@ -2,6 +2,8 @@
 
 import * as React from "react";
 import { InputFieldProps } from "./types";
+import Image from "next/image";
+import clsx from "clsx";
 
 export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
   ({ label, error, className, ...props }, ref) => (
@@ -14,21 +16,31 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
       <input
         ref={ref}
         {...props}
-        className={`${label ? 'mt-1' : ''} overflow-hidden self-stretch px-6 py-4 font-light w-full text-base font-(--hanken-grotesk) leading-6 border-2 
-                  border-solid ${error ? 'border-red-500' : 'border-slate-900 border-opacity-10'} rounded-[56px] text-slate-900 
-                  focus:outline-none focus:ring-2 focus:ring-sky-600 focus:border-transparent
-                  hover:border-sky-600 transition-colors bg-transparent ${className || ''}`}
+        className={clsx(
+          'overflow-hidden self-stretch px-6 py-4 font-light w-full text-base font-(--hanken-grotesk) leading-6',
+          'border-2 border-solid rounded-[56px] text-slate-900',
+          'focus:outline-none focus:border-sky-600 hover:border-sky-600  transition-colors bg-transparent',
+          {
+            'mt-1': label,
+            'border-red-500 focus:border-red-500': error,
+            'border-slate-900 border-opacity-10': !error
+          },
+          className
+        )}
         aria-invalid={error ? 'true' : 'false'}
         aria-errormessage={error ? `${props.id}-error` : undefined}
       />
       {error && (
+        <div className="mt-1 flex items-start flex-row">
+          <Image src="/ExclamationMark.svg" alt="ExclamationMark" width={16} height={16} />
         <p
           id={`${props.id}-error`}
-          className="mt-1 text-xs text-red-500"
+          className="text-xs text-red-500 ml-1"
           role="alert"
         >
           {error}
         </p>
+        </div>
       )}
     </div>
   )

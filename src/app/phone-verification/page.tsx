@@ -20,6 +20,7 @@ import { useModalStore } from "@/store/modalStore";
 export default function PhoneValidation() {
   const router = useRouter();
 
+
   const { isOpen, open, close } = useModalStore()
 
   const { phoneVerification, setPhoneVerificationData, clearFormState } =
@@ -28,7 +29,7 @@ export default function PhoneValidation() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors },
   } = useForm<PhoneVerificationFormData>({
     resolver: zodResolver(phoneVerificationSchema),
     defaultValues: phoneVerification,
