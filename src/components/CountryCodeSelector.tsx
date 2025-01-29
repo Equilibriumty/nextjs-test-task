@@ -29,7 +29,7 @@ export const CountryCodeSelector = () => {
   };
 
   const filteredCountries = countries.filter((country) =>
-    country.country.toLowerCase().includes(countryValue)
+    country.country.toLowerCase().includes(countryValue.toLowerCase())
   );
 
   return (

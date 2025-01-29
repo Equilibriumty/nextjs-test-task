@@ -33,7 +33,7 @@ export default function OnboardingPage() {
   return (
     <div className="min-h-screen bg-[#F6FAFE]">
       <div className="flex flex-col mx-auto w-full max-w-[480px] px-6 py-6">
-        <header className="flex flex-col items-center justify-center h-[72]">
+        <header className="flex flex-col items-center justify-center h-[72px]">
           <Image
             src="/Logo.svg"
             alt="Company Logo"

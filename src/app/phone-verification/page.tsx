@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   phoneVerificationSchema,
+  toPhoneNumberMask,
   type PhoneVerificationFormData,
 } from "@/utils/validations/onboardingForm";
 import { useFormStore } from "@/store/formStore";
@@ -42,10 +43,13 @@ export default function PhoneValidation() {
   };
 
 
+
+
+
   return (
     <div className="min-h-screen bg-[#F6FAFE]">
       <div className="flex flex-col mx-auto w-full max-w-[480px] px-6 py-6">
-        <header className="flex flex-row justify-between  items-center h-[72]">
+        <header className="flex flex-row justify-between  items-center h-[72px]">
           <button
           className="animate-in duration-200 fade-in"
             onClick={() => router.back()}
@@ -61,7 +65,7 @@ export default function PhoneValidation() {
             className="w-16 h-16 object-contain"
           />
 
-          <div className="w-[14] h-[14] invisible" />
+          <div className="w-[14px] h-[14px] invisible" />
         </header>
 
         <main className="flex flex-col w-full">
@@ -124,7 +128,11 @@ export default function PhoneValidation() {
                       placeholder="07890 123456"
                       autoFocus
                       id="phoneNumber"
-                      {...register("phoneNumber")}
+                      {...register('phoneNumber')}   
+                      onChange={(e) => {
+                        const value = toPhoneNumberMask(e.target.value)
+                        e.target.value = value
+                      }}
                       className={clsx(
                         "h-[56px] overflow-hidden self-stretch px-6 py-4 font-light w-full text-base font-(--hanken-grotesk) leading-6",
                         "border-2 border-solid rounded-[56px] text-slate-900",

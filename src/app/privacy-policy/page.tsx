@@ -30,9 +30,9 @@ export default function TermsAndConditionsModal() {
             Ahoy timbers dead tender guns of arr round down bilge. Sink black
             avast plate tell her tender. Road tales halter grog gun. Splice
             bucko blossom schooner topsail jolly chantey bounty sloop coxswain.
-            Or aft o'nine run the dock belaying clipper. Hang ballast down
+            Or aft o&apos;nine run the dock belaying clipper. Hang ballast down
             topsail scurvy grog. Heave halter to spot log dock rat heave hands
-            ipsum. Locker yer coxswain gold gangway. Grog pink deck men jones'
+            ipsum. Locker yer coxswain gold gangway. Grog pink deck men jones&apos;
             yawl yard fer. Lugsail starboard plate crack topsail.
           </p>
 
@@ -47,7 +47,7 @@ export default function TermsAndConditionsModal() {
           </p>
 
           <p className="text-gray-700 font-light">
-            Pin ipsum shot boat arr. Mizzen prey scurvy no crow's. Log roger
+            Pin ipsum shot boat arr. Mizzen prey scurvy no crow&apos;s. Log roger
             schooner yer gangway coast piracy gunwalls. Chase yarr chains down
             arrgh hands spirits gun. Salmagundi scurvy yarr lugsail aye or bow
             shiver. Lass dock pin driver poop rat. Avast sail bilge rat gunwalls

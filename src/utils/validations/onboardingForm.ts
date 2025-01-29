@@ -13,5 +13,10 @@ export const phoneVerificationSchema = z.object({
   countryCode: z.string().default('+44')
 })
 
+export const toPhoneNumberMask = (value: string) => {
+  return value.replace(/\D/g, "").replace(/(\d{5})(\d{0,6})/, "$1 $2").trim().substring(0, 12);
+
+}
+
 export type OnboardingFormData = z.infer<typeof onboardingSchema>
 export type PhoneVerificationFormData = z.infer<typeof phoneVerificationSchema> 
