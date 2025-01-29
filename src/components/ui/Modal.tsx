@@ -25,27 +25,11 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
       
       <div 
         className={`
-          relative w-full h-full bg-white overflow-y-auto
+          relative w-full h-full bg-slate-50 overflow-y-auto
           transform transition-all duration-300 ease-in-out
           ${isOpen ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}
         `}
       >
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
           {children}
       </div>
     </div>

@@ -13,15 +13,14 @@ import {
   type PhoneVerificationFormData,
 } from "@/utils/validations/onboardingForm";
 import { useFormStore } from "@/store/formStore";
-import { useState } from "react";
 import { CountryCodeSelector } from "@/components/CountryCodeSelector";
 import Modal from "@/components/ui/Modal";
+import { useModalStore } from "@/store/modalStore";
 
 export default function PhoneValidation() {
   const router = useRouter();
 
-  const [countryCodeSelectorVisible, setCountryCodeSelectorVisisble] =
-    useState(false);
+  const { isOpen, open, close } = useModalStore()
 
   const { phoneVerification, setPhoneVerificationData, clearFormState } =
     useFormStore();
@@ -42,9 +41,7 @@ export default function PhoneValidation() {
     clearFormState();
   };
 
-  const handleOpenModal = () => {
-    setCountryCodeSelectorVisisble(true);
-  };
+
 
   return (
     <div className="min-h-screen bg-[#F6FAFE]">
@@ -95,7 +92,7 @@ export default function PhoneValidation() {
                   <div className="flex flex-col min-w-28 whitespace-nowrap text-slate-900">
                     <button
                       type="button"
-                      onClick={handleOpenModal}
+                      onClick={open}
                       className="flex overflow-hidden gap-4 focus:border-transparent focus:ring-2 focus:ring-sky-600 justify-center items-center w-full border-2 border-solid border-slate-900 border-opacity-10 min-h-[56px] rounded-[56px]"
                       aria-label="Select country code"
                     >
@@ -143,17 +140,17 @@ export default function PhoneValidation() {
             </div>
 
             <div className="mt-3">
-              <Button type="submit" variant="primary" disabled={!isValid}>
+              <Button type="submit" variant="primary">
                 Continue
               </Button>
             </div>
           </form>
         </main>
       </div>
-      {countryCodeSelectorVisible && (
+      {isOpen && (
         <Modal
-          isOpen={countryCodeSelectorVisible}
-          onClose={() => setCountryCodeSelectorVisisble(false)}
+          isOpen={isOpen}
+          onClose={close}
         >
           <CountryCodeSelector />
         </Modal>

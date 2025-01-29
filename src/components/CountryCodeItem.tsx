@@ -2,6 +2,7 @@ import * as React from "react";
 import Image from "next/image";
 import { Country } from "@/components/CountryCodeSelector";
 import { useFormStore } from "@/store/formStore";
+import { useModalStore } from "@/store/modalStore";
 
 type CountryCodeItemProps = {
   country: Country;
@@ -12,12 +13,14 @@ export const CountryCodeItem: React.FC<CountryCodeItemProps> = ({
 }) => {
   const { phoneVerification, setPhoneVerificationData } = useFormStore();
 
+  const { close } = useModalStore()
+
   const handleClick = () => {
-    onClose()
     setPhoneVerificationData({
       ...phoneVerification,
       countryCode: country.code,
     });
+    close()
   };
 
   return (
