@@ -41,11 +41,13 @@ export default function PhoneValidation() {
     clearFormState();
   };
 
+
   return (
     <div className="min-h-screen bg-[#F6FAFE]">
       <div className="flex flex-col mx-auto w-full max-w-[480px] px-6 py-6">
         <header className="flex flex-row justify-between  items-center h-[72]">
           <button
+          className="animate-in duration-200 fade-in"
             onClick={() => router.back()}
             aria-label="Go back to previous page"
           >
@@ -70,10 +72,9 @@ export default function PhoneValidation() {
               <StatusIndicator number={2} isActive={true} />
             </div>
           </div>
-
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="flex flex-col gap-6 w-full"
+            className="flex flex-col gap-6 w-full animate-slide-left"
           >
             <div className="flex flex-col gap-4 w-full">
               <h1 className="text-xl font-bold leading-7 font-primary mt-6 text-slate-900">

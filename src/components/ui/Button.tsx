@@ -18,7 +18,7 @@ export const Button: React.FC<ButtonProps> = ({
               transition-all duration-200 ease-in-out
               ${
                 variant === "primary"
-                  ? "bg-sky-600 text-slate-50 hover:bg-sky-700 focus:ring-2 focus:ring-sky-600 focus:border-transparent focus:ring-offset-2"
+                  ? " bg-[#0D71C9] text-slate-50 hover:bg-sky-700 focus:ring-2 focus:ring-sky-600 focus:border-transparent focus:ring-offset-2"
                   : "text-sky-600 hover:bg-sky-50 focus:ring-2 focus:ring-sky-600"
               }
               disabled:opacity-50 disabled:cursor-not-allowed`}

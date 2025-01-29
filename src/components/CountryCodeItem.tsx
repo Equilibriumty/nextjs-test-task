@@ -26,7 +26,7 @@ export const CountryCodeItem: React.FC<CountryCodeItemProps> = ({
   return (
     <div
       onClick={handleClick}
-      className="flex overflow-hidden gap-2 items-center py-4 pr-4 pl-6 w-full min-h-[64px] whitespace-nowrap hover:bg-[#021626]/[4%]"
+      className="flex hover:cursor-pointer overflow-hidden gap-2 items-center py-4 pr-4 pl-6 w-full min-h-[64px] whitespace-nowrap hover:bg-[#021626]/[4%]"
     >
       <div className="flex gap-2 items-center self-stretch my-auto">
         <Image

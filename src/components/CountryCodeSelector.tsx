@@ -68,9 +68,7 @@ export const CountryCodeSelector = () => {
           </div>
           <button
             onClick={close}
-            className="
-              w-12 flex items-center justify-center
-          "
+            className="w-12 flex items-center justify-center"
           >
             <Image
               width={24}

@@ -51,11 +51,10 @@ export default function OnboardingPage() {
               <StatusIndicator number={2} isActive={false} />
             </div>
           </div>
-
           <div className="flex flex-col gap-6 w-full">
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="flex flex-col gap-6 w-full"
+              className="flex flex-col gap-6 w-full animate-slide-right"
             >
               <div className="flex flex-col gap-4 w-full">
                 <h1 className="text-xl font-bold text-slate-900 mt-6 font-primary">
