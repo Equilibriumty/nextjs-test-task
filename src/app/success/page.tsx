@@ -12,7 +12,7 @@ export default function SuccessPage() {
           Congratulations
         </h1>
         <p className="font-secondary font-light  text-[#021626]">Welcome to your very own 25</p>
-        <Link className="font-secondary font-bold text-sky-600" href={"/"}>
+        <Link className="font-secondary font-bold text-btnPrimary" href={"/"}>
           Back to start
         </Link>
       </div>

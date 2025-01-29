@@ -99,7 +99,7 @@ export default function PhoneValidation() {
                       className={clsx(
                         "flex overflow-hidden gap-4 min-h-[56px] focus:border-transparent focus:ring-2 focus:ring-sky-600 justify-center items-center w-full border-2 border-solid  rounded-[56px]",
                         {
-                          "border-red-500": errors.phoneNumber,
+                          "border-errorText": errors.phoneNumber,
                           "border-slate-900 border-opacity-10":
                             !errors.phoneNumber,
                         }
@@ -130,7 +130,7 @@ export default function PhoneValidation() {
                         "border-2 border-solid rounded-[56px] text-slate-900",
                         "focus:outline-none focus:border-sky-600 hover:border-sky-600  transition-colors bg-transparent",
                         {
-                          "border-red-500 focus:border-red-500":
+                          "border-errorText focus:border-errorText":
                             errors.phoneNumber?.message,
                           "border-slate-900 border-opacity-10":
                             !errors.phoneNumber?.message,
@@ -150,7 +150,7 @@ export default function PhoneValidation() {
                       width={16}
                       height={16}
                     />
-                    <p className="text-xs text-red-500 ml-1" role="alert">
+                    <p className="text-xs text-errorText ml-1" role="alert">
                       {errors.phoneNumber?.message}
                     </p>
                   </div>
@@ -165,12 +165,12 @@ export default function PhoneValidation() {
               </span>
               <Link
                 href="/terms-and-conditions"
-                className="font-bold text-sky-600"
+                className="font-bold text-btnPrimary"
               >
                 terms and conditions
               </Link>
               <span className="text-slate-900"> and </span>
-              <Link href="/privacy-policy" className="font-bold text-sky-600">
+              <Link href="/privacy-policy" className="font-bold text-btnPrimary">
                 privacy policy
               </Link>
             </div>

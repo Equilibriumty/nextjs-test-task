@@ -9,6 +9,9 @@ export default {
   theme: {
     extend: {
       colors: {
+        btnPrimary: "var(--btnPrimary)",
+        foregroundSecondary: "var(--foreground-secondary)",
+        errorText: "var(--errorText)",
         background: "var(--background)",
         foreground: "var(--foreground)",
       },

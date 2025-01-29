@@ -8,7 +8,7 @@ export const StatusIndicator: React.FC<StatusIndicatorProps> = ({
   <div
     className={`self-stretch my-auto w-8  h-8 min-h-[32px] rounded-[48px] flex items-center justify-center ${
       isActive
-        ? "bg-sky-600 text-slate-50"
+        ? "bg-btnPrimary text-slate-50"
         : "bg-slate-900 bg-opacity-15 text-slate-900 text-opacity-20"
     }`}
     role="status"

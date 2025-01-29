@@ -22,7 +22,7 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
           'focus:outline-none focus:border-sky-600 hover:border-sky-600  transition-colors bg-transparent',
           {
             'mt-1': label,
-            'border-red-500 focus:border-red-500': error ,
+            'border-errorText focus:border-errorText': error ,
             'border-slate-900 border-opacity-10': !error,
           },
           className
@@ -35,7 +35,7 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
           <Image src="/ExclamationMark.svg" alt="ExclamationMark" width={16} height={16} />
         <p
           id={`${props.id}-error`}
-          className="text-xs text-red-500 ml-1"
+          className="text-xs text-errorText ml-1"
           role="alert"
         >
           {error}
