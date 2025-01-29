@@ -3,7 +3,6 @@ import * as React from "react";
 import Image from "next/image";
 import { StatusIndicator } from "@/components/StatusIndicator";
 import { Button } from "@/components/ui/Button";
-import { InputField } from "@/components/ui/InputField";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
@@ -16,12 +15,12 @@ import { useFormStore } from "@/store/formStore";
 import { CountryCodeSelector } from "@/components/CountryCodeSelector";
 import Modal from "@/components/ui/Modal";
 import { useModalStore } from "@/store/modalStore";
+import clsx from "clsx";
 
 export default function PhoneValidation() {
   const router = useRouter();
 
-
-  const { isOpen, open, close } = useModalStore()
+  const { isOpen, open, close } = useModalStore();
 
   const { phoneVerification, setPhoneVerificationData, clearFormState } =
     useFormStore();
@@ -41,8 +40,6 @@ export default function PhoneValidation() {
     router.push("/success");
     clearFormState();
   };
-
-
 
   return (
     <div className="min-h-screen bg-[#F6FAFE]">
@@ -82,7 +79,7 @@ export default function PhoneValidation() {
               <h1 className="text-xl font-bold leading-7 font-primary mt-6 text-slate-900">
                 Let&apos;s validate your number
               </h1>
-              <div className="flex flex-col w-full font-light">
+              <div className="flex flex-col w-full  font-light">
                 <label
                   htmlFor="phone"
                   className="text-xs leading-4 text-slate-900"
@@ -90,11 +87,22 @@ export default function PhoneValidation() {
                   Phone number
                 </label>
                 <div className="flex gap-1 mt-1 items-start w-full text-base leading-6">
-                  <div className="flex flex-col min-w-28 whitespace-nowrap text-slate-900">
+                  <div
+                    className={
+                      "flex flex-col min-w-28 whitespace-nowrap text-slate-900"
+                    }
+                  >
                     <button
                       type="button"
                       onClick={open}
-                      className="flex overflow-hidden gap-4 focus:border-transparent focus:ring-2 focus:ring-sky-600 justify-center items-center w-full border-2 border-solid border-slate-900 border-opacity-10 min-h-[56px] rounded-[56px]"
+                      className={clsx(
+                        "flex overflow-hidden gap-4 min-h-[56px] focus:border-transparent focus:ring-2 focus:ring-sky-600 justify-center items-center w-full border-2 border-solid  rounded-[56px]",
+                        {
+                          "border-red-500": errors.phoneNumber,
+                          "border-slate-900 border-opacity-10":
+                            !errors.phoneNumber,
+                        }
+                      )}
                       aria-label="Select country code"
                     >
                       <span className="text-[16px] font-light">
@@ -110,16 +118,42 @@ export default function PhoneValidation() {
                     </button>
                   </div>
                   <div className="flex-1">
-                    <InputField
+                    <input
                       type="tel"
                       placeholder="07890 123456"
                       autoFocus
                       id="phoneNumber"
-                      error={errors.phoneNumber?.message}
                       {...register("phoneNumber")}
+                      className={clsx(
+                        "h-[56px] overflow-hidden self-stretch px-6 py-4 font-light w-full text-base font-(--hanken-grotesk) leading-6",
+                        "border-2 border-solid rounded-[56px] text-slate-900",
+                        "focus:outline-none focus:border-sky-600 hover:border-sky-600  transition-colors bg-transparent",
+                        {
+                          "border-red-500 focus:border-red-500":
+                            errors.phoneNumber?.message,
+                          "border-slate-900 border-opacity-10":
+                            !errors.phoneNumber?.message,
+                        }
+                      )}
+                      aria-invalid={
+                        errors.phoneNumber?.message ? "true" : "false"
+                      }
                     />
                   </div>
                 </div>
+                {errors.phoneNumber?.message && (
+                  <div className="flex flex-row items-center mt-1">
+                    <Image
+                      src="/ExclamationMark.svg"
+                      alt="ExclamationMark"
+                      width={16}
+                      height={16}
+                    />
+                    <p className="text-xs text-red-500 ml-1" role="alert">
+                      {errors.phoneNumber?.message}
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -149,10 +183,7 @@ export default function PhoneValidation() {
         </main>
       </div>
       {isOpen && (
-        <Modal
-          isOpen={isOpen}
-          onClose={close}
-        >
+        <Modal isOpen={isOpen} onClose={close}>
           <CountryCodeSelector />
         </Modal>
       )}

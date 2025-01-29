@@ -6,6 +6,7 @@ export interface StatusIndicatorProps {
 export interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string;
+  showErrorState?: boolean
 }
 
 export interface ButtonProps extends React.ComponentProps<'button'> {

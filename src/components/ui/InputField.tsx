@@ -6,7 +6,7 @@ import Image from "next/image";
 import clsx from "clsx";
 
 export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
-  ({ label, error, className, ...props }, ref) => (
+  ({ label, error,  className, ...props }, ref) => (
     <div className="flex flex-col w-full">
       {label && (
         <label htmlFor={props.id} className="text-xs leading-4 text-slate-900">
@@ -22,8 +22,8 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
           'focus:outline-none focus:border-sky-600 hover:border-sky-600  transition-colors bg-transparent',
           {
             'mt-1': label,
-            'border-red-500 focus:border-red-500': error,
-            'border-slate-900 border-opacity-10': !error
+            'border-red-500 focus:border-red-500': error ,
+            'border-slate-900 border-opacity-10': !error,
           },
           className
         )}
