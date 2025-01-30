@@ -42,7 +42,7 @@ export default function PhoneValidation() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F6FAFE]">
+    <div className="bg-[#F6FAFE]">
         <main className="flex flex-col w-full">
           <div className="flex justify-center h-[48]">
             <Stepper />

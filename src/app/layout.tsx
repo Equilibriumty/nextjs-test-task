@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${garamond.variable} ${hanken_grotesk.className} antialiased`}
+        className={`${garamond.variable} ${hanken_grotesk.className} antialiased h-screen`}
       >
         {children}
       </body>

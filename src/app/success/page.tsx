@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function SuccessPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#F6FAFE]">
+    <div className="flex h-screen items-center justify-center bg-[#F6FAFE]">
       <div className="flex flex-col items-center justify-center gap-2">
         <div className="flex flex-col items-center justify-start size-[120px]">
         <Image src="/Check.svg" alt="Checkmark" width={100} height={100} />

@@ -12,7 +12,7 @@ export default function TermsAndConditionsModal() {
   };
 
   return (
-    <div className="w-full mx-auto min-h-screen bg-slate-50">
+    <div className="w-full mx-auto bg-slate-50">
       <div className="max-w-3xl p-6 mx-auto">
         <div className="flex h-[72px] justify-end items-center">
           <button onClick={handleGoBack}>
