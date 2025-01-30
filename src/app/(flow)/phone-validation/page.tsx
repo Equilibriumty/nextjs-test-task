@@ -43,26 +43,6 @@ export default function PhoneValidation() {
 
   return (
     <div className="min-h-screen bg-[#F6FAFE]">
-      <div className="flex flex-col mx-auto w-full max-w-[480px] px-6 py-6">
-        <header className="flex flex-row justify-between  items-center h-[72px]">
-          <button
-            className="animate-in duration-200 fade-in"
-            onClick={() => router.back()}
-            aria-label="Go back to previous page"
-          >
-            <Image src="/ArrowLeft.svg" alt="" width={14} height={14} />
-          </button>
-          <Image
-            src="/Logo.svg"
-            alt="Company Logo"
-            width={64}
-            height={64}
-            className="w-16 h-16 object-contain"
-          />
-
-          <div className="w-[14px] h-[14px] invisible" />
-        </header>
-
         <main className="flex flex-col w-full">
           <div className="flex justify-center h-[48]">
             <Stepper />
@@ -188,7 +168,6 @@ export default function PhoneValidation() {
             </div>
           </form>
         </main>
-      </div>
       {isOpen && (
         <Modal isOpen={isOpen} onClose={close}>
           <CountryCodeSelector />

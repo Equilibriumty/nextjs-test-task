@@ -2,14 +2,12 @@ import type { Metadata } from "next";
 import { EB_Garamond, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 
-
 const garamond = EB_Garamond({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
   variable: "--eb-garamond",
 });
-
 
 const hanken_grotesk = Hanken_Grotesk({
   subsets: ["latin"],
