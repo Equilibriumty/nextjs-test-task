@@ -1,6 +1,8 @@
 import { create } from 'zustand'
 
 interface FormState {
+  currentStep: 'initial' | 'phone-validation' | 'final',
+  setCurrentStep: (step: 'initial' | 'phone-validation' | 'final') => void
   onboarding: {
     firstName: string
     lastName: string
@@ -15,8 +17,9 @@ interface FormState {
 }
 
 export const useFormStore = create<FormState>()(
-
     (set) => ({
+      currentStep: 'initial',
+      setCurrentStep: (step) => set({ currentStep: step }),
       onboarding: {
         firstName: '',
         lastName: '',

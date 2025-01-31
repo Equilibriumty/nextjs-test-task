@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { EB_Garamond, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
+import { Header } from "@/components/Header";
 
 const garamond = EB_Garamond({
   subsets: ["latin"],
@@ -31,7 +32,11 @@ export default function RootLayout({
       <body
         className={`${garamond.variable} ${hanken_grotesk.className} antialiased h-screen`}
       >
+
+              <div className="flex flex-col mx-auto w-full max-w-[480px] px-6 py-6">
+        <Header />
         {children}
+      </div>
       </body>
     </html>
   );

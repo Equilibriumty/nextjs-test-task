@@ -1,7 +1,16 @@
+'use client'
 import Link from "next/link";
 import Image from "next/image";
+import { useFormStore } from "@/store/formStore";
 
 export default function SuccessPage() {
+
+  const { setCurrentStep } = useFormStore()
+
+  const handleSetStep = () => {
+    setCurrentStep('initial')
+  }
+
   return (
     <div className="flex h-screen items-center justify-center bg-[#F6FAFE]">
       <div className="flex flex-col items-center justify-center gap-2">
@@ -12,7 +21,7 @@ export default function SuccessPage() {
           Congratulations
         </h1>
         <p className="font-secondary font-light  text-[#021626]">Welcome to your very own 25</p>
-        <Link className="font-secondary font-bold text-btnPrimary" href={"/"}>
+        <Link onClick={handleSetStep} className="font-secondary font-bold text-btnPrimary" href={"/"}>
           Back to start
         </Link>
       </div>
