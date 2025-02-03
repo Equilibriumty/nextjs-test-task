@@ -32,11 +32,10 @@ export default function RootLayout({
       <body
         className={`${garamond.variable} ${hanken_grotesk.className} antialiased h-screen`}
       >
-
-              <div className="flex flex-col mx-auto w-full max-w-[480px] px-6 py-6">
-        <Header />
-        {children}
-      </div>
+        <div className="flex flex-col mx-auto w-full max-w-[480px] px-6 py-6">
+          <Header />
+          {children}
+        </div>
       </body>
     </html>
   );
