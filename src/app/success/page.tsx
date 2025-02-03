@@ -5,10 +5,11 @@ import { useFormStore } from "@/store/formStore";
 
 export default function SuccessPage() {
 
-  const { setCurrentStep } = useFormStore()
+  const { setCurrentStep, setDirection } = useFormStore()
 
   const handleSetStep = () => {
     setCurrentStep('initial')
+    setDirection(null)
   }
 
   return (

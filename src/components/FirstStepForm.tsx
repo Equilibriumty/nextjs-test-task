@@ -12,7 +12,7 @@ import {
 import { useFormStore } from "@/store/formStore";
 
 export function FormFirstStep() {
-  const { onboarding, setOnboardingData, setCurrentStep } = useFormStore();
+  const { onboarding, setOnboardingData, setCurrentStep, setDirection } = useFormStore();
 
   const {
     register,
@@ -27,6 +27,7 @@ export function FormFirstStep() {
   const onSubmit = (data: OnboardingFormData) => {
     setOnboardingData(data);
     setCurrentStep("phone-validation");
+    setDirection('forward')
   };
 
   return (

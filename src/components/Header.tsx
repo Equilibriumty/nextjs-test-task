@@ -8,10 +8,11 @@ import { useFormStore } from "@/store/formStore";
 
 export const Header = () => {
 
-  const { currentStep, setCurrentStep } = useFormStore()
+  const { currentStep, setCurrentStep, setDirection } = useFormStore()
 
   const handleGoBack = () => {
     setCurrentStep('initial')
+    setDirection('backward')
   }
 
   const pathname = usePathname();

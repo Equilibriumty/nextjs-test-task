@@ -20,30 +20,44 @@ export default {
         secondary: "var(--font-hk-grotesk)",
       },
       keyframes: {
-        "slide-in": {
+        "slide-in-right": {
           "0%": {
             transform: "translateX(100%)",
-            opacity: "0",
           },
           "100%": {
             transform: "translateX(0)",
-            opacity: "1",
           },
         },
-        "slide-out": {
+        "slide-out-right": {
           "0%": {
             transform: "translateX(0)",
-            opacity: "1",
+          },
+          "100%": {
+            transform: "translateX(100%)",
+          },
+        },
+        "slide-in-left": {
+          "0%": {
+            transform: "translateX(-100%)",
+          },
+          "100%": {
+            transform: "translateX(0)",
+          },
+        },
+        "slide-out-left": {
+          "0%": {
+            transform: "translateX(0)",
           },
           "100%": {
             transform: "translateX(-100%)",
-            opacity: "0",
           },
         },
       },
       animation: {
-        "slide-left": "slide-in 0.2s ease-out",
-        "slide-right": "slide-out 0.2s ease-out",
+        "slide-forward-enter": "slide-in-right 0.2s ease-out",
+        "slide-forward-exit": "slide-out-left 0.2s ease-out",
+        "slide-backward-enter": "slide-in-left 0.2s ease-out",
+        "slide-backward-exit": "slide-out-right 0.2s ease-out",
       },
     },
   },
